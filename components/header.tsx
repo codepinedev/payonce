@@ -25,7 +25,6 @@ export function Header() {
             <Button>
               Submit
             </Button>
-
           </Link>
         </nav>
       </div>
