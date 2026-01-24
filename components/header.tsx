@@ -14,7 +14,6 @@ export function Header() {
             className="text-muted-foreground hover:text-foreground"
           >
   <Button variant={"outline"}>
-
             Browse
   </Button>
 
