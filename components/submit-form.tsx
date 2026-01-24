@@ -63,7 +63,7 @@ export function SubmitForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <Label>Category</Label>
-          <Select value={category} onValueChange={setCategory} required>
+          <Select value={category} onValueChange={(v) => v && setCategory(v)} required>
             <SelectTrigger className="mt-1 w-full">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
@@ -79,7 +79,7 @@ export function SubmitForm() {
 
         <div>
           <Label>Platform</Label>
-          <Select value={platform} onValueChange={setPlatform} required>
+          <Select value={platform} onValueChange={(v) => v && setPlatform(v)} required>
             <SelectTrigger className="mt-1 w-full">
               <SelectValue placeholder="Select" />
             </SelectTrigger>

@@ -11,10 +11,10 @@ export function Hero() {
         Curated tools with no subscriptions.
       </p>
       <div className="mt-6 flex justify-center gap-3">
-        <Button asChild>
+        <Button>
           <Link href="/tools">Browse tools</Link>
         </Button>
-        <Button asChild variant="outline">
+        <Button variant="outline">
           <Link href="/submit">Submit</Link>
         </Button>
       </div>

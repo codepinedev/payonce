@@ -16,7 +16,7 @@ export function PriceCard({ price, url }: PriceCardProps) {
           {price === 0 ? "Free forever" : "One-time"}
         </p>
       </div>
-      <Button asChild>
+      <Button>
         <a href={url} target="_blank" rel="noopener noreferrer">
           Visit site →
         </a>

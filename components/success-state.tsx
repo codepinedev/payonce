@@ -13,7 +13,7 @@ export function SuccessState({ onReset }: SuccessStateProps) {
         <Button onClick={onReset} variant="outline">
           Submit another
         </Button>
-        <Button asChild>
+        <Button >
           <Link href="/tools">Browse tools</Link>
         </Button>
       </div>
