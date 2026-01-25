@@ -8,6 +8,8 @@ export const metadata = {
   description: "One-time purchase software tools. No subscriptions.",
 };
 
+export const revalidate = 3600;
+
 export default async function ToolsPage() {
   const tools = await getAllTools();
 

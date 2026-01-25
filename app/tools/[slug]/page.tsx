@@ -32,6 +32,8 @@ const platformIcons: Record<string, typeof AppleIcon> = {
   "Cross-platform": ComputerIcon,
 };
 
+export const revalidate = 3600;
+
 interface ToolPageProps {
   params: Promise<{ slug: string }>;
 }
