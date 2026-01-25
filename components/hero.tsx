@@ -23,7 +23,7 @@ export function Hero({ toolCount }: HeroProps) {
         Every tool here offers a genuine one-time purchase — verified manually.
       </p>
       <div className="mt-6 flex justify-center gap-3">
-        <Button>
+        <Button className={"font-semibold"}>
           <Link href="/tools">Browse tools</Link>
         </Button>
         <Button variant="outline">

@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CATEGORIES } from "@/lib/categories";
+import { trackEvent } from "@/lib/analytics";
 
 interface CategoryFilterProps {
   value: string;
@@ -16,8 +17,15 @@ interface CategoryFilterProps {
 }
 
 export function CategoryFilter({ value, onChange }: CategoryFilterProps) {
+  function handleChange(v: string) {
+    if (v && v !== "all") {
+      trackEvent("filter_used", { category: v });
+    }
+    onChange(v);
+  }
+
   return (
-    <Select value={value} onValueChange={(v) => v && onChange(v)}>
+    <Select value={value} onValueChange={(v) => v && handleChange(v)}>
       <SelectTrigger className="w-45">
         <SelectValue placeholder="All categories" />
       </SelectTrigger>

@@ -5,7 +5,8 @@ export function Header() {
   return (
     <header className="border-b border-border">
       <div className="mx-auto flex h-12 max-w-4xl items-center justify-between px-4">
-        <Link href="/" className="font-bold">
+        <Link href="/" className="flex items-center gap-2 font-bold">
+          <span className="h-3 w-3 rounded-full bg-primary" />
           PayOnce
         </Link>
         <nav className="flex gap-4 text-sm">

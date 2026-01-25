@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -12,6 +14,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import type { Tool } from "@/types/tool";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 
 const platformIcons: Record<string, typeof AppleIcon> = {
   macOS: AppleIcon,
@@ -30,10 +33,19 @@ interface ToolCardProps {
 export function ToolCard({ tool }: ToolCardProps) {
   const PlatformIcon = platformIcons[tool.platform] || GlobalIcon;
 
+  function handleClick() {
+    trackEvent("tool_click", {
+      tool: tool.name,
+      category: tool.category,
+      price: tool.price,
+    });
+  }
+
   return (
     <Link
       href={`/tools/${tool.slug}`}
       className="group flex gap-3 border border-border p-4 hover:border-foreground/20"
+      onClick={handleClick}
     >
       <div className="relative shrink-0">
         <div className="flex h-12 w-12 items-center justify-center rounded bg-muted p-2 text-lg font-semibold text-muted-foreground border">

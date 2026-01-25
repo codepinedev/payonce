@@ -17,8 +17,9 @@ import {
 } from "@hugeicons/core-free-icons";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Button } from "@/components/ui/button";
 import { PricingDisclaimer } from "@/components/pricing-disclaimer";
+import { ToolFeedback } from "@/components/tool-feedback";
+import { OutboundLink } from "@/components/outbound-link";
 import { getToolBySlug, getAllTools } from "@/lib/tools";
 
 const platformIcons: Record<string, typeof AppleIcon> = {
@@ -183,11 +184,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
                 </p>
               </div>
 
-              <Button className="mt-6 w-full" size="lg">
-                <a href={tool.url} target="_blank" rel="noopener noreferrer">
-                  Visit website →
-                </a>
-              </Button>
+              <OutboundLink href={tool.url} toolName={tool.name} />
 
               <p className="mt-4 text-center text-xs text-muted-foreground">
                 No subscription required
@@ -196,6 +193,10 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
             <div className="mt-4">
               <PricingDisclaimer />
+            </div>
+
+            <div className="mt-4">
+              <ToolFeedback toolId={tool.id} />
             </div>
           </div>
         </div>

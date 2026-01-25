@@ -5,7 +5,10 @@ export function Footer() {
         PayOnce is curated by humans.<br />
         No sponsored placements. No affiliate bias.
       </p>
-      <p className="mt-4 text-muted-foreground/50">PayOnce</p>
+      <p className="mt-4 flex items-center justify-center gap-1.5 text-muted-foreground/50">
+        <span className="h-2 w-2 rounded-full bg-primary/50" />
+        PayOnce
+      </p>
     </footer>
   );
 }

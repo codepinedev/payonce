@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/lib/analytics";
 
 interface SearchInputProps {
   value: string;
@@ -13,6 +15,20 @@ export function SearchInput({
   onChange,
   placeholder = "Search tools...",
 }: SearchInputProps) {
+  const trackedRef = useRef(false);
+
+  function handleBlur() {
+    if (value.trim() && !trackedRef.current) {
+      trackEvent("search_used", { query: value.trim() });
+      trackedRef.current = true;
+    }
+  }
+
+  function handleChange(newValue: string) {
+    trackedRef.current = false;
+    onChange(newValue);
+  }
+
   return (
     <div className="relative">
       <svg
@@ -31,7 +47,8 @@ export function SearchInput({
       <Input
         type="search"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
+        onBlur={handleBlur}
         placeholder={placeholder}
         className="pl-9"
       />

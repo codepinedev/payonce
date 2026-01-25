@@ -14,6 +14,7 @@ import {
 import { CATEGORIES } from "@/lib/categories";
 import { PLATFORMS } from "@/lib/platforms";
 import { SuccessState } from "@/components/success-state";
+import { trackEvent } from "@/lib/analytics";
 
 export function SubmitForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -49,6 +50,11 @@ export function SubmitForm() {
         throw new Error(result.error || "Failed to submit");
       }
 
+      trackEvent("submit_tool_click", {
+        tool: data.name,
+        category: data.category,
+        platform: data.platform,
+      });
       setSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
