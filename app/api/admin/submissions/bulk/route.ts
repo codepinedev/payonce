@@ -42,11 +42,9 @@ export async function POST(request: NextRequest) {
             continue;
           }
 
-          // Generate unique slug
           const baseSlug = generateSlug(submission.name);
           const uniqueSlug = await ensureUniqueSlug(baseSlug);
 
-          // Create tool
           const { error: toolError } = await supabaseAdmin
             .from("tools")
             .insert({
