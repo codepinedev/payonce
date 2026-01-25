@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import tools from "@/data/tools.json";
 import { CATEGORIES } from "@/lib/categories";
 
-export function Hero() {
-  const toolCount = tools.length;
+interface HeroProps {
+  toolCount: number;
+}
+
+export function Hero({ toolCount }: HeroProps) {
   const categoryCount = CATEGORIES.length;
   return (
     <section className="relative py-10 text-center">
@@ -37,6 +39,10 @@ export function Hero() {
         <span className="h-4 w-px bg-border" />
         <span className="font-medium">100% <span className="text-muted-foreground">one-time</span></span>
       </div>
+
+      <p className="mt-4 text-xs text-muted-foreground/60 italic">
+        If it sneaks in a subscription later, we remove it.
+      </p>
     </section>
   );
 }

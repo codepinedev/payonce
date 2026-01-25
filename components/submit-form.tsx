@@ -18,15 +18,43 @@ import { SuccessState } from "@/components/success-state";
 export function SubmitForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [category, setCategory] = useState("");
   const [platform, setPlatform] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    setLoading(false);
-    setSubmitted(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      url: formData.get("url") as string,
+      category,
+      platform,
+      price: Number(formData.get("price")) || 0,
+      email: (formData.get("email") as string) || undefined,
+    };
+
+    try {
+      const response = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.error || "Failed to submit");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -36,6 +64,7 @@ export function SubmitForm() {
           setSubmitted(false);
           setCategory("");
           setPlatform("");
+          setError(null);
         }}
       />
     );
@@ -43,6 +72,12 @@ export function SubmitForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {error && (
+        <div className="rounded-md bg-red-500/10 p-3 text-sm text-red-600 dark:text-red-400">
+          {error}
+        </div>
+      )}
+
       <div>
         <Label htmlFor="name">Tool name</Label>
         <Input id="name" name="name" required className="mt-1" />
@@ -116,7 +151,7 @@ export function SubmitForm() {
       </div>
 
       <Button type="submit" disabled={loading} className="w-full">
-        {loading ? "..." : "Submit"}
+        {loading ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );
