@@ -1,14 +1,24 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import tools from "@/data/tools.json";
+import { CATEGORIES } from "@/lib/categories";
 
 export function Hero() {
+  const toolCount = tools.length;
+  const categoryCount = CATEGORIES.length;
   return (
-    <section className="py-12 text-center">
+    <section className="relative py-10 text-center">
+      {/* Subtle radial gradient background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-muted/50 via-transparent to-transparent" />
+
       <h1 className="text-2xl font-bold sm:text-3xl">
         Software you buy once and own forever.
       </h1>
       <p className="mt-2 text-muted-foreground">
         Curated tools with no subscriptions.
+      </p>
+      <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground/80">
+        Every tool here offers a genuine one-time purchase — verified manually.
       </p>
       <div className="mt-6 flex justify-center gap-3">
         <Button>
@@ -17,6 +27,15 @@ export function Hero() {
         <Button variant="outline">
           <Link href="/submit">Submit</Link>
         </Button>
+      </div>
+
+      {/* Stats strip */}
+      <div className="mx-auto mt-8 inline-flex items-center gap-6 rounded-full border border-border/60 bg-muted/30 px-6 py-2 text-sm">
+        <span className="font-medium">{toolCount} <span className="text-muted-foreground">tools</span></span>
+        <span className="h-4 w-px bg-border" />
+        <span className="font-medium">{categoryCount} <span className="text-muted-foreground">categories</span></span>
+        <span className="h-4 w-px bg-border" />
+        <span className="font-medium">100% <span className="text-muted-foreground">one-time</span></span>
       </div>
     </section>
   );

@@ -10,6 +10,7 @@
     "platform": "macOS",
     "url": "https://raycast.com",
     "featured": true,
+    "editorsPick": true,
     "createdAt": "2024-01-15",
     "verifiedAt": "2024-01-20"
   },
@@ -24,6 +25,8 @@
     "platform": "macOS",
     "url": "https://cleanshot.com",
     "featured": true,
+    "editorsPick": true,
+    "verifiedOneTime": true,
     "createdAt": "2024-01-10",
     "verifiedAt": "2024-01-18"
   },
@@ -62,10 +65,11 @@
     "description": "Modern, native database management tool",
     "fullDescription": "TablePlus is a modern, native tool with an elegant UI that allows you to simultaneously manage multiple databases such as MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more.",
     "category": "Development",
-    "price": 89,
+    "price": 99,
     "platform": "Cross-platform",
     "url": "https://tableplus.com",
     "featured": true,
+    "editorsPick": true,
     "createdAt": "2024-01-03",
     "verifiedAt": "2024-01-10"
   },
@@ -94,6 +98,7 @@
     "platform": "Cross-platform",
     "url": "https://affinity.serif.com/designer",
     "featured": true,
+    "verifiedOneTime": true,
     "createdAt": "2024-01-01",
     "verifiedAt": "2024-01-08"
   },
@@ -166,5 +171,50 @@
     "featured": false,
     "createdAt": "2023-12-15",
     "verifiedAt": "2023-12-22"
+  },
+  {
+    "id": "13",
+    "slug": "libreoffice",
+    "name": "LibreOffice",
+    "description": "Free and powerful open-source office suite",
+    "fullDescription": "LibreOffice is a free and powerful office suite, and a successor to OpenOffice. Its clean interface and feature-rich tools help you unleash your creativity and enhance your productivity. Includes Writer, Calc, Impress, Draw, Base, and Math.",
+    "category": "Productivity",
+    "price": 0,
+    "platform": "Cross-platform",
+    "url": "https://libreoffice.org",
+    "featured": true,
+    "verifiedOneTime": true,
+    "createdAt": "2024-01-20",
+    "verifiedAt": "2024-01-25"
+  },
+  {
+    "id": "14",
+    "slug": "gimp",
+    "name": "GIMP",
+    "description": "Free open-source image editor rivaling Photoshop",
+    "fullDescription": "GIMP is a cross-platform image editor available for GNU/Linux, macOS, Windows, and more. Whether you are a graphic designer, photographer, illustrator, or scientist, GIMP provides sophisticated tools to get your job done.",
+    "category": "Design",
+    "price": 0,
+    "platform": "Cross-platform",
+    "url": "https://gimp.org",
+    "featured": true,
+    "editorsPick": true,
+    "verifiedOneTime": true,
+    "createdAt": "2024-01-18",
+    "verifiedAt": "2024-01-25"
+  },
+  {
+    "id": "15",
+    "slug": "avira",
+    "name": "Avira Free Security",
+    "description": "Free antivirus and VPN protection for your devices",
+    "fullDescription": "Avira Free Security is an all-in-one security solution that includes antivirus, VPN, password manager, and performance optimization tools. Keep your devices safe from malware, ransomware, and online threats without paying a subscription.",
+    "category": "System Utilities",
+    "price": 0,
+    "platform": "Cross-platform",
+    "url": "https://avira.com",
+    "featured": false,
+    "createdAt": "2024-01-16",
+    "verifiedAt": "2024-01-22"
   }
 ]

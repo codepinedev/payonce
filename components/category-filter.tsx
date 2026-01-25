@@ -18,7 +18,7 @@ interface CategoryFilterProps {
 export function CategoryFilter({ value, onChange }: CategoryFilterProps) {
   return (
     <Select value={value} onValueChange={(v) => v && onChange(v)}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-45">
         <SelectValue placeholder="All categories" />
       </SelectTrigger>
       <SelectContent>

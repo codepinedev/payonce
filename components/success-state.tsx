@@ -8,7 +8,7 @@ interface SuccessStateProps {
 export function SuccessState({ onReset }: SuccessStateProps) {
   return (
     <div className="py-8 text-center">
-      <p className="font-medium">Submitted. We'll review it.</p>
+      <p className="font-medium">Submitted. We&apos;ll review it.</p>
       <div className="mt-4 flex justify-center gap-3">
         <Button onClick={onReset} variant="outline">
           Submit another

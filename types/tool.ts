@@ -13,6 +13,8 @@ export interface Tool {
   url: string;
   logoUrl?: string;
   featured: boolean;
+  editorsPick?: boolean;
+  verifiedOneTime?: boolean;
   createdAt: string;
   verifiedAt: string;
 }
