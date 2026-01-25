@@ -11,6 +11,7 @@ import {
   ComputerIcon,
   Award01Icon,
   CheckmarkBadge01Icon,
+  UserStarIcon,
 } from "@hugeicons/core-free-icons";
 import type { Tool } from "@/types/tool";
 import Image from "next/image";
@@ -61,6 +62,12 @@ export function ToolCard({ tool }: ToolCardProps) {
             <HugeiconsIcon icon={CheckmarkBadge01Icon} size={10} />
           </span>
         )}
+        {tool.communityRecommended && (
+          <span className="absolute -right-1 -bottom-1 flex h-4 w-4 items-center justify-center rounded-full bg-lime-600 text-white shadow-sm" title="Community Recommended">
+            <HugeiconsIcon icon={UserStarIcon} size={10} />
+          </span>
+        )}
+        
       </div>
 
       <div className="min-w-0 flex-1">

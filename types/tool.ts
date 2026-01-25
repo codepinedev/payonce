@@ -15,6 +15,7 @@ export interface Tool {
   featured: boolean;
   editorsPick?: boolean;
   verifiedOneTime?: boolean;
+  communityRecommended?: boolean;
   createdAt: string;
   verifiedAt: string;
 }

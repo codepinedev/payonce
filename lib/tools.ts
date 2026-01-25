@@ -107,6 +107,7 @@ function mapTool(row: Record<string, unknown>): Tool {
     featured: row.featured as boolean,
     editorsPick: row.editors_pick as boolean | undefined,
     verifiedOneTime: row.verified_one_time as boolean | undefined,
+    communityRecommended: row.community_recommended as boolean,
     createdAt: row.created_at as string,
     verifiedAt: row.verified_at as string,
   };
