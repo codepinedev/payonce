@@ -87,17 +87,12 @@ export default async function ToolPage({ params }: ToolPageProps) {
             <div className="flex gap-4">
               <div className="relative shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted p-3 text-xl font-semibold text-muted-foreground border">
-                  {tool.url ? (
-                    <Image
-                      src={`https://www.google.com/s2/favicons?sz=128&domain=${tool.url}`}
-                      className="w-full h-full"
-                      alt={tool.name}
-                      width={64}
-                      height={64}
-                    />
-                  ) : (
-                    <span>{tool.name.charAt(0)}</span>
-                  )}
+  
+
+                            {
+                              tool.logoUrl ? <Image src={tool.logoUrl} className="w-full h-full" alt={tool.name}                       width={64}
+                      height={64} /> : tool.url ? <Image src={`https://www.google.com/s2/favicons?sz=128&domain=${tool.url}`} className="w-full h-full" alt={tool.name} width={48} height={48} /> : <span>{tool.name.charAt(0)}</span>
+                            }
                 </div>
                 {tool.editorsPick && (
                   <span

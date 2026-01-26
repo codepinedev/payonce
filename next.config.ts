@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.jim-nielsen.com",
       },
+      {
+        protocol:"https",
+        hostname:"sindresorhus.com"
+      }
     ],
   },
 };

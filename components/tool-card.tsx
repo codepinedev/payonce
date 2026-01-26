@@ -50,7 +50,9 @@ export function ToolCard({ tool }: ToolCardProps) {
     >
       <div className="relative shrink-0">
         <div className="flex h-12 w-12 items-center justify-center rounded bg-muted p-2 text-lg font-semibold text-muted-foreground border">
-          {tool.url ? <Image src={`https://www.google.com/s2/favicons?sz=128&domain=${tool.url}`} className="w-full h-full" alt={tool.name} width={48} height={48} /> : <span>{tool.name.charAt(0)}</span>}
+          {
+            tool.logoUrl ? <Image src={tool.logoUrl} className="w-full h-full" alt={tool.name} width={48} height={48} /> : tool.url ? <Image src={`https://www.google.com/s2/favicons?sz=128&domain=${tool.url}`} className="w-full h-full" alt={tool.name} width={48} height={48} /> : <span>{tool.name.charAt(0)}</span>
+          }
         </div>
         {tool.editorsPick && (
           <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-amber-500 text-white shadow-sm" title="Editor's Pick">
