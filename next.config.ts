@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
       {
         protocol:"https",
         hostname:"sindresorhus.com"
+      },
+      {
+        protocol:"https",
+        hostname:"framerusercontent.com"
       }
     ],
   },
