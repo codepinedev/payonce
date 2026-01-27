@@ -44,6 +44,22 @@ export default function AdminLayout({
                     Submissions
                   </Button>
                 </Link>
+                <Link href="/admin/edit-suggestions">
+                  <Button
+                    variant={isActive("/admin/edit-suggestions") ? "default" : "ghost"}
+                    size="sm"
+                  >
+                    Edit Suggestions
+                  </Button>
+                </Link>
+                <Link href="/admin/pricing-flags">
+                  <Button
+                    variant={isActive("/admin/pricing-flags") ? "default" : "ghost"}
+                    size="sm"
+                  >
+                    Pricing Flags
+                  </Button>
+                </Link>
                 <Link href="/admin/tools">
                   <Button
                     variant={isActive("/admin/tools") ? "default" : "ghost"}

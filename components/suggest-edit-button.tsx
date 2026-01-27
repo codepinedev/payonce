@@ -107,7 +107,6 @@ export function SuggestEditButton({ tool }: SuggestEditButtonProps) {
   return (
     <>
       <Button
-      disabled
         variant="outline"
         size="sm"
         onClick={() => setIsOpen(true)}

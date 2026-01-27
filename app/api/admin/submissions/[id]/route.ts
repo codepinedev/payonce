@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { generateSlug, ensureUniqueSlug } from "@/lib/slug";
+import { sendApprovalNotification } from "@/lib/email";
 
 export async function PATCH(
   request: NextRequest,
@@ -84,6 +85,24 @@ export async function PATCH(
         console.error("Error updating submission:", updateError);
         // Tool was created but submission status update failed
         // Consider this a partial success
+      }
+
+      // Send approval notification email (non-blocking)
+      if (submission.email) {
+        sendApprovalNotification(submission.email, {
+          toolName: submission.name,
+          toolSlug: uniqueSlug,
+        })
+          .then((result) => {
+            if (result.success) {
+              console.log(`Approval email sent to ${submission.email}`);
+            } else {
+              console.warn(`Failed to send approval email: ${result.error}`);
+            }
+          })
+          .catch((error) => {
+            console.error("Email notification error:", error);
+          });
       }
 
       return NextResponse.json(
