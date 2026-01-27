@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
       {
         protocol:"https",
         hostname:"framerusercontent.com"
+      },
+      {
+        protocol:"https",
+        hostname:"e4iz70yuw6.ufs.sh"
       }
     ],
   },

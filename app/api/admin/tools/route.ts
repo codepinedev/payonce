@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
       featured,
       editorsPick,
       verifiedOneTime,
+      communityRecommended,
     } = body;
 
     // Validate required fields
@@ -54,6 +55,7 @@ export async function POST(request: NextRequest) {
         featured: featured || false,
         editors_pick: editorsPick || false,
         verified_one_time: verifiedOneTime || false,
+        community_recommended: communityRecommended || false,
         created_at: new Date().toISOString(),
         verified_at: new Date().toISOString(),
       })

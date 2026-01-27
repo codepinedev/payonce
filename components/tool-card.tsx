@@ -65,18 +65,26 @@ export function ToolCard({ tool }: ToolCardProps) {
           </span>
         )}
         {tool.communityRecommended && (
-          <span className="absolute -right-1 -bottom-1 flex h-4 w-4 items-center justify-center rounded-full bg-lime-600 text-white shadow-sm" title="Community Recommended">
+          <span className="absolute -right-1 -bottom-1 flex h-4 w-4 items-center justify-center rounded-full bg-violet-500 text-white shadow-sm" title="Suggested by Community">
             <HugeiconsIcon icon={UserStarIcon} size={10} />
           </span>
         )}
-        
+
       </div>
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
-          <h3 className="truncate font-medium group-hover:text-primary">
-            {tool.name}
-          </h3>
+          <div className="flex items-center gap-2 min-w-0">
+            <h3 className="truncate font-medium group-hover:text-primary">
+              {tool.name}
+            </h3>
+            {tool.communityRecommended && (
+              <span className="shrink-0 inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-medium text-violet-600 dark:text-violet-400">
+                <HugeiconsIcon icon={UserStarIcon} size={10} />
+                Community
+              </span>
+            )}
+          </div>
           <span className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-bold ${tool.price === 0 ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" : "bg-foreground/5 text-foreground"}`}>
             {tool.price === 0 ? "Free" : `$${tool.price}`}
           </span>

@@ -59,6 +59,7 @@ export async function POST(request: NextRequest) {
               platform: submission.platform,
               url: submission.url,
               featured: false,
+              community_recommended: true, // Mark as community suggested
               created_at: new Date().toISOString(),
               verified_at: new Date().toISOString(),
             });

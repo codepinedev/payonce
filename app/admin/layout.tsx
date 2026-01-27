@@ -44,6 +44,14 @@ export default function AdminLayout({
                     Submissions
                   </Button>
                 </Link>
+                <Link href="/admin/tools">
+                  <Button
+                    variant={isActive("/admin/tools") ? "default" : "ghost"}
+                    size="sm"
+                  >
+                    Manage Tools
+                  </Button>
+                </Link>
                 <Link href="/admin/add">
                   <Button
                     variant={isActive("/admin/add") ? "default" : "ghost"}
