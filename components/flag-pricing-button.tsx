@@ -114,13 +114,14 @@ export function FlagPricingButton({
   return (
     <>
       <Button
+        disabled
         variant="ghost"
         size="sm"
         onClick={() => setIsOpen(true)}
         className="gap-2 text-muted-foreground hover:text-foreground"
       >
         <HugeiconsIcon icon={AlertCircleIcon} size={14} />
-        Flag Pricing Change
+        Flag Pricing Change (Coming Soon)
       </Button>
 
       <AlertDialog open={isOpen} onOpenChange={handleClose}>
