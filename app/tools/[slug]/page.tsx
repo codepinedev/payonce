@@ -19,6 +19,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PricingDisclaimer } from "@/components/pricing-disclaimer";
 import { ToolFeedback } from "@/components/tool-feedback";
+import { SuggestEditButton } from "@/components/suggest-edit-button";
+import { FlagPricingButton } from "@/components/flag-pricing-button";
 import { OutboundLink } from "@/components/outbound-link";
 import { getToolBySlug, getAllTools } from "@/lib/tools";
 
@@ -87,12 +89,12 @@ export default async function ToolPage({ params }: ToolPageProps) {
             <div className="flex gap-4">
               <div className="relative shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted p-3 text-xl font-semibold text-muted-foreground border">
-  
 
-                            {
-                              tool.logoUrl ? <Image src={tool.logoUrl} className="w-full h-full" alt={tool.name}                       width={64}
+
+                  {
+                    tool.logoUrl ? <Image src={tool.logoUrl} className="w-full h-full" alt={tool.name} width={64}
                       height={64} /> : tool.url ? <Image src={`https://www.google.com/s2/favicons?sz=128&domain=${tool.url}`} className="w-full h-full" alt={tool.name} width={48} height={48} /> : <span>{tool.name.charAt(0)}</span>
-                            }
+                  }
                 </div>
                 {tool.editorsPick && (
                   <span
@@ -113,7 +115,17 @@ export default async function ToolPage({ params }: ToolPageProps) {
               </div>
 
               <div className="min-w-0 flex-1">
-                <h1 className="text-2xl font-bold">{tool.name}</h1>
+                <div className="flex justify-between">
+                  <h1 className="text-2xl font-bold">{tool.name}</h1>
+                  <div className="flex items-center">
+                    <SuggestEditButton tool={tool} />
+                    <FlagPricingButton
+                      toolId={tool.id}
+                      toolName={tool.name}
+                      currentPrice={tool.price}
+                    />
+                  </div>
+                </div>
                 <p className="mt-1 text-muted-foreground">{tool.description}</p>
 
                 {/* Badges */}
@@ -194,6 +206,11 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
             <div className="mt-4">
               <ToolFeedback toolId={tool.id} />
+            </div>
+
+            {/* User actions */}
+            <div className="mt-4 space-y-2">
+
             </div>
           </div>
         </div>

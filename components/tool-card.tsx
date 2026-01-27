@@ -16,6 +16,7 @@ import {
 import type { Tool } from "@/types/tool";
 import Image from "next/image";
 import { trackEvent } from "@/lib/analytics";
+import { SuggestEditButton } from "./suggest-edit-button";
 
 const platformIcons: Record<string, typeof AppleIcon> = {
   macOS: AppleIcon,
