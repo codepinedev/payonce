@@ -74,13 +74,22 @@ export default async function ToolPage({ params }: ToolPageProps) {
     <>
       <Header />
       <main className="mx-auto max-w-4xl px-4 py-8">
-        <Link
-          href="/tools"
-          className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
-          Back to tools
-        </Link>
+          <Link
+            href="/tools"
+            className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
+            Back to tools
+          </Link>
+
+          <div className="flex items-center justify-end mb-4">
+            <SuggestEditButton tool={tool} />
+            <FlagPricingButton
+              toolId={tool.id}
+              toolName={tool.name}
+              currentPrice={tool.price}
+            />
+          </div>
 
         <div className="grid gap-8 md:grid-cols-[1fr,300px]">
           {/* Main content */}
@@ -89,8 +98,6 @@ export default async function ToolPage({ params }: ToolPageProps) {
             <div className="flex gap-4">
               <div className="relative shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted p-3 text-xl font-semibold text-muted-foreground border">
-
-
                   {
                     tool.logoUrl ? <Image src={tool.logoUrl} className="w-full h-full" alt={tool.name} width={64}
                       height={64} /> : tool.url ? <Image src={`https://www.google.com/s2/favicons?sz=128&domain=${tool.url}`} className="w-full h-full" alt={tool.name} width={48} height={48} /> : <span>{tool.name.charAt(0)}</span>
@@ -115,17 +122,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
               </div>
 
               <div className="min-w-0 flex-1">
-                <div className="flex justify-between">
-                  <h1 className="text-2xl font-bold">{tool.name}</h1>
-                  <div className="flex items-center">
-                    <SuggestEditButton tool={tool} />
-                    <FlagPricingButton
-                      toolId={tool.id}
-                      toolName={tool.name}
-                      currentPrice={tool.price}
-                    />
-                  </div>
-                </div>
+                <h1 className="text-2xl font-bold">{tool.name}</h1>
                 <p className="mt-1 text-muted-foreground">{tool.description}</p>
 
                 {/* Badges */}
