@@ -1,5 +1,6 @@
 import type { Tool } from "@/types/tool";
 import { supabaseAdmin } from "@/lib/supabase";
+import { TAG_PROPERTY_MAP, type TAG } from "@/lib/tags";
 
 export async function getAllTools(): Promise<Tool[]> {
   const { data, error } = await supabaseAdmin
@@ -76,6 +77,17 @@ export function searchTools(tools: Tool[], query: string): Tool[] {
 export function filterToolsByCategory(tools: Tool[], category: string): Tool[] {
   if (category === "all") return tools;
   return tools.filter((tool) => tool.category === category);
+}
+
+export function filterToolsByTag(tools: Tool[], tags: TAG[]): Tool[] {
+  if (tags.length === 0) return tools;
+
+  return tools.filter((tool) =>
+    tags.every((tag) => {
+      const propertyKey = TAG_PROPERTY_MAP[tag];
+      return tool[propertyKey] === true;
+    })
+  );
 }
 
 export async function getToolCount(): Promise<number> {
