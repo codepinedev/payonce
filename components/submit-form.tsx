@@ -142,6 +142,7 @@ export function SubmitForm() {
           name="price"
           type="number"
           min={0}
+          step="0.01"
           placeholder="0"
           required
           className="mt-1"

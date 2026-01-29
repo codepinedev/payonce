@@ -11,6 +11,7 @@ import {
   ComputerIcon,
   Award01Icon,
   CheckmarkBadge01Icon,
+  UserStarIcon,
   ArrowLeft01Icon,
   Calendar03Icon,
   LinkSquare01Icon,
@@ -144,6 +145,12 @@ export default async function ToolPage({ params }: ToolPageProps) {
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 dark:text-blue-400">
                       <HugeiconsIcon icon={CheckmarkBadge01Icon} size={12} />
                       Verified One-Time
+                    </span>
+                  )}
+                  {tool.communityRecommended && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-600 dark:text-violet-400">
+                      <HugeiconsIcon icon={UserStarIcon} size={12} />
+                      Community Suggested
                     </span>
                   )}
                 </div>
