@@ -87,22 +87,18 @@ export async function PATCH(
         // Consider this a partial success
       }
 
-      // Send approval notification email (non-blocking)
+      // Send approval notification email
       if (submission.email) {
-        sendApprovalNotification(submission.email, {
+        const emailResult = await sendApprovalNotification(submission.email, {
           toolName: submission.name,
           toolSlug: uniqueSlug,
-        })
-          .then((result) => {
-            if (result.success) {
-              console.log(`Approval email sent to ${submission.email}`);
-            } else {
-              console.warn(`Failed to send approval email: ${result.error}`);
-            }
-          })
-          .catch((error) => {
-            console.error("Email notification error:", error);
-          });
+        });
+
+        if (emailResult.success) {
+          console.log(`Approval email sent to ${submission.email}`);
+        } else {
+          console.warn(`Failed to send approval email: ${emailResult.error}`);
+        }
       }
 
       return NextResponse.json(
