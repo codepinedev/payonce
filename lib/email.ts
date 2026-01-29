@@ -44,12 +44,14 @@ export async function sendEmail(options: SendEmailOptions): Promise<EmailResult>
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "PayOnce <onboarding@resend.dev>",
+      from: "PayOnce <hello@payonce.tools>",
       to: options.to,
       subject: options.subject,
       html: options.html,
       text: options.text,
     });
+
+    console.log(data)
 
     if (error) {
       console.error("Resend error:", error);
