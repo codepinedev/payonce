@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { sendContributionThankYou } from "@/lib/email";
 
 export async function PATCH(
   request: NextRequest,
@@ -92,6 +93,29 @@ export async function PATCH(
         { error: "Failed to update suggestion status" },
         { status: 500 }
       );
+    }
+
+    // Send thank you email on approval
+    if (action === "approve" && suggestion.email) {
+      const { data: tool } = await supabaseAdmin
+        .from("tools")
+        .select("name, slug")
+        .eq("id", suggestion.tool_id)
+        .single();
+
+      if (tool) {
+        const emailResult = await sendContributionThankYou(suggestion.email, {
+          toolName: tool.name,
+          toolSlug: tool.slug,
+          contributionType: "edit",
+        });
+
+        if (emailResult.success) {
+          console.log(`Thank you email sent to ${suggestion.email}`);
+        } else {
+          console.warn(`Failed to send thank you email: ${emailResult.error}`);
+        }
+      }
     }
 
     return NextResponse.json(

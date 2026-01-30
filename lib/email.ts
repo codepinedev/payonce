@@ -2,7 +2,10 @@ import { Resend } from "resend";
 import {
   generateApprovalEmailHtml,
   generateApprovalEmailText,
+  generateContributionThankYouHtml,
+  generateContributionThankYouText,
   type ApprovalEmailParams,
+  type ContributionThankYouParams,
 } from "./email-templates";
 
 const resendApiKey = process.env.RESEND_API_KEY;
@@ -77,5 +80,18 @@ export async function sendApprovalNotification(
     subject: `Your submission "${params.toolName}" has been approved!`,
     html: generateApprovalEmailHtml(params),
     text: generateApprovalEmailText(params),
+  });
+}
+
+export async function sendContributionThankYou(
+  email: string,
+  params: ContributionThankYouParams
+): Promise<EmailResult> {
+  const typeLabel = params.contributionType === "edit" ? "edit suggestion" : "pricing update";
+  return sendEmail({
+    to: email,
+    subject: `Thank you! Your ${typeLabel} for "${params.toolName}" has been applied`,
+    html: generateContributionThankYouHtml(params),
+    text: generateContributionThankYouText(params),
   });
 }
