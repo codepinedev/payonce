@@ -1,4 +1,4 @@
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://payonce.app";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://payonce.tools";
 
 export interface ApprovalEmailParams {
   toolName: string;

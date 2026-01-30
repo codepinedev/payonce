@@ -8,17 +8,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PayOnce - Buy Software Once, Own It Forever",
+  title: "PayOnce - Buy Mac Apps Once, Own Them Forever",
   description:
-    "A curated directory of one-time purchase software tools for developers who are done with subscriptions.",
+    "A curated directory of one-time purchase macOS apps for Mac users done with subscriptions.",
   keywords: [
+    "macOS apps",
+    "mac software",
+    "mac apps",
     "one-time purchase",
-    "software",
     "no subscription",
     "buy once",
     "lifetime license",
-    "developer tools",
-    "free tools",
+    "mac tools",
   ],
   icons: {
     icon: [
